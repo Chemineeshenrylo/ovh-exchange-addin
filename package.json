@@ -1,0 +1,24 @@
+{
+  "name": "addin-ovh-exchange",
+  "version": "1.0.0",
+  "description": "Complément pour serveur Exchange OVH ex5.mail.ovh.net",
+  "main": "src/addin.html",
+  "scripts": {
+    "start": "npx http-server . -p 3000 --cors",
+    "dev": "npx http-server . -p 3000 --cors -o"
+  },
+  "keywords": [
+    "outlook",
+    "addin",
+    "ovh",
+    "exchange"
+  ],
+  "author": "Votre Nom",
+  "license": "MIT",
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}

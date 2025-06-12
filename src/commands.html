@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js"></script>
+</head>
+<body>
+    <script>
+        Office.onReady(() => {
+            // Page pour les commandes du ruban
+            console.log('Commands page loaded');
+        });
+        
+        // Fonction appelée par les boutons du ruban
+        function openTaskPane(event) {
+            Office.addin.showAsTaskpane();
+            event.completed();
+        }
+        
+        // Enregistrer les actions
+        Office.actions.associate("openTaskPane", openTaskPane);
+    </script>
+</body>
+</html>

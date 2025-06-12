@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>OVH Exchange Helper</title>
+    
+    <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/beta/hosted/office.js"></script>
+    
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            color: #0078d4;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .settings-btn {
+            position: absolute;
+            right: 0;
+            top: 0;
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            color: #605e5c;
+            padding: 5px;
+        }
+        
+        .settings-btn:hover {
+            color: #0078d4;
+        }
+        
+        .info-section {
+            margin-bottom: 15px;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+        }
+        
+        .label {
+            font-weight: bold;
+            color: #323130;
+            margin-bottom: 5px;
+        }
+        
+        .value {
+            color: #605e5c;
+            word-wrap: break-word;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-label {
+            display: block;
+            font-weight: bold;
+            color: #323130;
+            margin-bottom: 5px;
+        }
+        
+        .form-textarea {
+            width: 100%;
+            min-height: 80px;
+            padding: 8px;
+            border: 1px solid #d1d1d1;
+            border-radius: 4px;
+            font-family: inherit;
+            resize: vertical;
+            box-sizing: border-box;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #d1d1d1;
+            border-radius: 4px;
+            font-family: inherit;
+            box-sizing: border-box;
+        }
+        
+        .button {
+            background-color: #0078d4;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+        }
+        
+        .button:hover {
+            background-color: #106ebe;
+        }
+        
+        .button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        
+        .status {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 4px;
+            text-align: center;
+        }
+        
+        .success {
+            background-color: #dff6dd;
+            color: #107c10;
+        }
+        
+        .error {
+            background-color: #fde7e9;
+            color: #d13438;
+        }
+        
+        .info {
+            background-color: #deecf9;
+            color: #0078d4;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.4);
+        }
+        
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+        }
+        
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            position: absolute;
+            right: 15px;
+            top: 10px;
+        }
+        
+        .close:hover {
+            color: black;
+        }
+        
+        .save-btn {
+            background-color: #107c10;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 15px;
+        }
+        
+        .save-btn:hover {
+            background-color: #0e6e0e;
+        }
+        
+        .response-section {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f0f8ff;
+            border-radius: 8px;
+            border-left: 4px solid #0078d4;
+        }
+        
+        .response-content {
+            background-color: white;
+            padding: 10px;
+            border-radius: 4px;
+            margin-top: 10px;
+            white-space: pre-wrap;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #0078d4;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .button-group {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.info-section {
+    margin-bottom: 15px;
+}
+
+.info-item {
+    margin-bottom: 8px;
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="header">
+            🤖 AI Exchange Assistant
+            <button class="settings-btn" onclick="openSettings()" title="Paramètres">⚙️</button>
+        </h2>
+        
+        <div class="info-section" id="email-info">
+            <div class="info-item">
+                <div class="label">📨 Sujet de l'email:</div>
+                <div class="value" id="email-subject">Chargement...</div>
+            </div>
+            
+            <div class="info-item">
+                <div class="label">👤 Expéditeur:</div>
+                <div class="value" id="email-sender">Chargement...</div>
+            </div>
+            
+            <div class="info-item">
+                <div class="label">📅 Date de réception:</div>
+                <div class="value" id="email-date">Chargement...</div>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label class="form-label" for="aiDirectives">💭 Précisez vos directives pour l'IA:</label>
+            <textarea id="aiDirectives" class="form-textarea" placeholder="Ex: Rédige une réponse professionnelle et courtoise. Sois concis et utilise un ton formel."></textarea>
+        </div>
+        
+        <button class="button" onclick="analyzeEmailWithAI()" id="analyzeBtn">
+            <span id="analyzeIcon">🤖</span>
+            <span id="analyzeText">Analyser avec IA</span>
+        </button>
+        
+        <div id="aiResponse" class="response-section" style="display: none;">
+            <div class="label">🤖 Réponse de l'IA:</div>
+            <div id="responseContent" class="response-content"></div>
+            <div class="button-group" style="margin-top: 10px;">
+                <button class="button" onclick="composeReply()" style="background-color: #107c10;">
+                    📋 Copier la réponse
+                </button>
+                <button class="button" onclick="regenerateResponse()" style="background-color: #0078d4; margin-left: 10px;">
+                    🔄 Regénérer
+                </button>
+            </div>
+        </div>
+        
+        <div id="status"></div>
+    </div>
+    
+    <!-- Modal des paramètres -->
+    <div id="settingsModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeSettings()">&times;</span>
+            <h3>⚙️ Paramètres IA</h3>
+            
+            <div class="form-group">
+                <label class="form-label" for="webhookUrl">🔗 URL Webhook (vers ChatGPT):</label>
+                <input type="text" id="webhookUrl" class="form-input" placeholder="https://votre-webhook.com/chatgpt">
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label" for="securityToken">🔐 Token de sécurité:</label>
+                <input type="password" id="securityToken" class="form-input" placeholder="Votre token de sécurité">
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label" for="responseTemplate">📝 Template de réponse:</label>
+                <textarea id="responseTemplate" class="form-textarea" placeholder="Ex: Bonjour,\n\n[REPONSE_IA]\n\nCordialement,\n[VOTRE_NOM]\n[SIGNATURE]"></textarea>
+            </div>
+            
+            <!-- Dans le modal des paramètres, après le champ responseTemplate -->
+            <div class="form-group">
+                <label for="customSignature">Signature personnalisée :</label>
+                <textarea id="customSignature" placeholder="Votre signature personnalisée (optionnel)" rows="3"></textarea>
+            </div>
+            
+            <button class="save-btn" onclick="saveSettings()">
+                💾 Sauvegarder
+            </button>
+        </div>
+    </div>
+    
+    <script src="addin.js"></script>
+</body>
+</html>
