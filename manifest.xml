@@ -6,12 +6,12 @@
            xsi:type="MailApp">
   <Id>12345678-1234-1234-1234-123456789abc</Id>
   <Version>1.0.0.0</Version>
-  <ProviderName>Mon Entreprise</ProviderName>
+  <ProviderName>Chemineeshenrylo</ProviderName>
   <DefaultLocale>fr-FR</DefaultLocale>
   <DisplayName DefaultValue="OVH Exchange Helper" />
   <Description DefaultValue="Complément pour serveur Exchange OVH" />
-  <IconUrl DefaultValue="https://localhost:3000/images/icon-32.png"/>
-  <HighResolutionIconUrl DefaultValue="https://localhost:3000/images/icon-80.png"/>
+  <IconUrl DefaultValue="https://chemineeshenrylo.github.io/ovh-exchange-addin/images/icon-32.png"/>
+  <HighResolutionIconUrl DefaultValue="https://chemineeshenrylo.github.io/ovh-exchange-addin/images/icon-80.png"/>
   <SupportUrl DefaultValue="https://www.ovh.com/support" />
   
   <Hosts>
@@ -27,7 +27,7 @@
   <FormSettings>
     <Form xsi:type="ItemRead">
       <DesktopSettings>
-        <SourceLocation DefaultValue="https://localhost:3000/src/addin.html" />
+        <SourceLocation DefaultValue="https://chemineeshenrylo.github.io/ovh-exchange-addin/src/addin.html" />
         <RequestedHeight>400</RequestedHeight>
       </DesktopSettings>
     </Form>
@@ -78,13 +78,13 @@
     
     <Resources>
       <bt:Images>
-        <bt:Image id="Icon.16x16" DefaultValue="https://localhost:3000/images/icon-16.png"/>
-        <bt:Image id="Icon.32x32" DefaultValue="https://localhost:3000/images/icon-32.png"/>
-        <bt:Image id="Icon.80x80" DefaultValue="https://localhost:3000/images/icon-80.png"/>
+        <bt:Image id="Icon.16x16" DefaultValue="https://chemineeshenrylo.github.io/ovh-exchange-addin/images/icon-16.png"/>
+        <bt:Image id="Icon.32x32" DefaultValue="https://chemineeshenrylo.github.io/ovh-exchange-addin/images/icon-32.png"/>
+        <bt:Image id="Icon.80x80" DefaultValue="https://chemineeshenrylo.github.io/ovh-exchange-addin/images/icon-80.png"/>
       </bt:Images>
       <bt:Urls>
-        <bt:Url id="Commands.Url" DefaultValue="https://localhost:3000/src/commands.html" />
-        <bt:Url id="Taskpane.Url" DefaultValue="https://localhost:3000/src/addin.html" />
+        <bt:Url id="Commands.Url" DefaultValue="https://chemineeshenrylo.github.io/ovh-exchange-addin/src/commands.html" />
+        <bt:Url id="Taskpane.Url" DefaultValue="https://chemineeshenrylo.github.io/ovh-exchange-addin/src/addin.html" />
       </bt:Urls>
       <bt:ShortStrings>
         <bt:String id="GroupLabel" DefaultValue="OVH Tools"/>
