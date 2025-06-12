@@ -97,7 +97,9 @@
     <Resources>
       <bt:Images>
         <bt:Image id="Icon.16x16" DefaultValue="https://chemineeshenrylo.github.io/ovh-exchange-addin/images/icon-16.png"/>
+        <bt:Image id="Icon.25x25" DefaultValue="https://chemineeshenrylo.github.io/ovh-exchange-addin/images/icon-25.png"/>
         <bt:Image id="Icon.32x32" DefaultValue="https://chemineeshenrylo.github.io/ovh-exchange-addin/images/icon-32.png"/>
+        <bt:Image id="Icon.48x48" DefaultValue="https://chemineeshenrylo.github.io/ovh-exchange-addin/images/icon-48.png"/>
         <bt:Image id="Icon.80x80" DefaultValue="https://chemineeshenrylo.github.io/ovh-exchange-addin/images/icon-80.png"/>
       </bt:Images>
       <bt:Urls>
