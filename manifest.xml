@@ -73,6 +73,24 @@
             </OfficeTab>
           </ExtensionPoint>
         </DesktopFormFactor>
+        
+        <!-- Add Mobile Support -->
+        <MobileFormFactor>
+          <FunctionFile resid="Commands.Url" />
+          <ExtensionPoint xsi:type="MobileMessageReadCommandSurface">
+            <Control xsi:type="MobileButton" id="msgReadOpenPaneButton">
+              <Label resid="TaskpaneButton.Label" />
+              <Icon>
+                <bt:Image size="25" resid="Icon.25x25" />
+                <bt:Image size="32" resid="Icon.32x32" />
+                <bt:Image size="48" resid="Icon.48x48" />
+              </bt:Icon>
+              <Action xsi:type="ShowTaskpane">
+                <SourceLocation resid="Taskpane.Url" />
+              </Action>
+            </Control>
+          </ExtensionPoint>
+        </MobileFormFactor>
       </Host>
     </Hosts>
     
